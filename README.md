@@ -1,4 +1,4 @@
-# Experiment--03-Half-Subtractor-and-Full-subtractor
+# Experiment--04-Half-Subtractor-and-Full-subtractor
 ## Implementation-of-Half-subtractor-and-Full-subtractor-circuit
 ## AIM:
 To design a half subtractor and full subtractor circuit and verify its truth table in Quartus using Verilog programming.
@@ -26,29 +26,76 @@ A full subtractor is a combinational circuit that performs subtraction involving
 Diff = A ⊕ B ⊕ Bin B = A'Bin + A'B + BBin
 
 ## Procedure
+Create a New Project:
 
+Open Quartus and create a new project by selecting "File" > "New Project Wizard."
+Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA).
+Create a New Design File:
 
+Once the project is created, right-click on the project name in the Project Navigator and select "Add New File."
+Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description language.
+Write the Combinational Logic Code:
 
-Write the detailed procedure here 
+Open the newly created Verilog or VHDL file and write the code for your combinational logic.
+Compile the Project:
 
+To compile the project, click on "Processing" > "Start Compilation" in the menu.
+Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device.
+Analyze and Fix Errors:
+
+If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window.
+Review and fix any issues in your code if necessary.
+View the RTL diagram.
+Verification:
+
+Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF".
+Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All.
+Give the Input Combinations according to the Truth Table amd then simulate the Output Waveform.
 
 ## Program:
-/*
-Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.<br>
+Developed by: sivaram R
+RegisterNumber:  212222100050
+## HALF SUBTRACTER:
+```
+module EX04(a,b,difference,borrow);
+input a,b;
+output difference,borrow;
+wire x;
+xor (difference,a,b);
+not (x,a);
+and (borrow,x,b);
+endmodule
+```
+## FULL SUBTRACTOR:
+```
+module FullSub04(a,b,bin,difference,borrow);
+input a,b,bin;
+output difference,borrow;
+wire p;
+assign difference=((a^b)^bin);
+not (p,a);
+assign borrow=((p&b)|(p&bin)|(b&bin));
+endmodule
+```
 
-## Output:
+## RTL DIAGRAM:
+## HALF SUBTRACTOR:
+![HALF SUB](https://github.com/sivaram-R/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/121165794/35be1aa3-4cab-4ba1-8ce0-5e2dc7b3094e)
+## FULL SUBTRACTOR:
+![FULL SUB](https://github.com/sivaram-R/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/121165794/48374200-66d5-4881-a297-18cb38631211)
 
-## Truthtable
+## TRUTH TABLE:
+## HALF SUBTRACTOR:
+![SUB TT](https://github.com/sivaram-R/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/121165794/eba85315-31f7-4c25-8659-006059939dd9)
+## FULL SUBTRACTOR:
+![FULL TT](https://github.com/sivaram-R/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/121165794/c1e1fbf1-3b67-4332-b037-de3f01dc2a44)
 
-
-
-##  RTL realization
-
-
-## Timing diagram 
+## OUTPUT:
+## HALF SUBTRACTOR:
+![OP HALF](https://github.com/sivaram-R/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/121165794/4361d01b-3fde-429d-9575-385dc2f4583b)
+## FULL SUBTRATCTOR:
+![OP FULL](https://github.com/sivaram-R/Experiment--04-Half-Subtractor-and-Full-subtractor/assets/121165794/7a6852e0-fb11-43bd-a017-f56b75954058)
 
 ## Result:
 Thus the half subtractor and full subtractor circuits are designed and the truth tables is verified using quartus software.
